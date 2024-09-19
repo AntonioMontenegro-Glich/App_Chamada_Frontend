@@ -27,7 +27,7 @@ document.getElementById('Lista de Presença-form').addEventListener('submit', as
 
             if (response.ok) {
                 document.getElementById('Lista de Presença-form').reset();
-                fetchPresencas();
+                fetchpresencas();
             } else {
                 console.error('Erro ao adicionar presença', response.statusText);
             }
@@ -46,7 +46,7 @@ async function convertImageToBase64(file) {
     });
 }
 // Função fetch(faz a mesma função do verbo get) que puxa algum elemento, nesse caso as Presencas do modelo
-async function fetchPresencas() {
+async function fetchpresencas() {
     try {
         const response = await fetch('http://127.0.0.1:3000/api/presencas'); // Certifique-se de que a rota da API está correta
         if (!response.ok) {
@@ -69,4 +69,4 @@ async function fetchPresencas() {
     }
 }
 
-fetchPresencas();
+fetchpresencas();
