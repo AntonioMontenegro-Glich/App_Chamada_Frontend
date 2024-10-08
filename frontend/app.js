@@ -1,7 +1,7 @@
 // Parte do código aonde farei a conexão do backend e frontend
 // Primeiro preciso puxar o formulário que estou exibindo na minha tela aonde os dados estão sendo recebidos
 // document.getElementById função para pegar elementos do código pelo id já determinado
-document.getElementById('Lista de Presença-form').addEventListener('submit', async function(event) {
+document.getElementById('lista-presenca-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const nome = document.getElementById('nome').value;
@@ -26,7 +26,7 @@ document.getElementById('Lista de Presença-form').addEventListener('submit', as
             });
 
             if (response.ok) {
-                document.getElementById('Lista de Presença-form').reset();
+                document.getElementById('lista-presenca-form').reset();
                 fetchpresencas();
             } else {
                 console.error('Erro ao adicionar presença', response.statusText);
@@ -53,14 +53,14 @@ async function fetchpresencas() {
             throw new Error('Erro ao buscar Presença');
         }
         const presencas = await response.json();
-        const list = document.getElementById('Presença-list');
+        const list = document.getElementById('presença-list');
         list.innerHTML = '';
         presencas.forEach(p => {
             const item = document.createElement('div');
             item.innerHTML = `
-                <h3>${p.name}</h3>
-                <p>${p.description}</p>
-                <img src="${p.photo}" alt="${p.name}" style="max-width: 100%; height: auto;">
+                <h3>${p.nome}</h3>
+                <p>${p.resumo_aula}</p>
+                <img src="${p.photo}" alt="${p.nome}" style="max-width: 100%; height: auto;">
             `;
             list.appendChild(item);
         });
